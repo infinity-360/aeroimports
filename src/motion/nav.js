@@ -20,7 +20,7 @@ export function nav(lenis) {
 
   const set = (id) => links.forEach((a) => a.classList.toggle('is-on', a.dataset.sec === id));
   const map = [
-    ['.stage', 'voo'], ['.spec', 'drone'], ['.unfold', 'drone'], ['.cam', 'camera'], ['.price', 'comprar'], ['.loja', 'loja'], ['.foot', 'loja'],
+    ['.stage', 'voo'], ['.spec', 'drone'], ['.unfold', 'drone'], ['.cam', 'drone'], ['.cat', 'produtos'], ['.price', 'comprar'], ['.loja', 'loja'], ['.foot', 'loja'],
   ];
   map.forEach(([sel, id]) => {
     ScrollTrigger.create({
