@@ -1,0 +1,26 @@
+:root {
+  /* AeroImports: a areia e o céu da filmagem + o azul neon da logo como acento único */
+  --areia: #f1f0ec;
+  --duna: #dfe3e6;
+  --turquesa: #1d8fd1;
+  --lagoa: #0b3a63;
+  --sombra-lagoa: 5 24 44;
+  --tinta: #0f1419;
+  --noite: #080c11;
+  --cam-bg: #0f1215;
+  --grafite: rgb(24 32 42 / 0.84);
+  --sol: #3fcfff; /* o acento: azul neon da logo */
+  --wa: #25d366;
+
+  --sans: 'Inter Tight Variable', 'Inter Tight', system-ui, sans-serif;
+  --mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
+
+  --gutter: clamp(1rem, 3.6vw, 3.5rem);
+  --nav-h: 56px;
+
+  --tr-name: -0.06em;
+  --tr-title: -0.052em;
+  --tr-video: -0.045em;
+  --tr-num: -0.06em;
+  --tr-body: -0.014em;
+}

@@ -1,0 +1,40 @@
+.cam { position: relative; z-index: 3; background: var(--cam-bg); }
+.cam__view { position: relative; height: 100vh; height: 100lvh; overflow: hidden; color: var(--areia); }
+.cam__head { position: absolute; left: var(--gutter); top: calc(var(--nav-h) + clamp(1.5rem, 6vh, 4rem)); max-width: 34rem; }
+.cam__head .label { color: var(--sol); }
+.cam__t { margin-top: 1.2rem; font-size: clamp(2.4rem, 4.6vw, 4.8rem); font-weight: 610; letter-spacing: var(--tr-title); line-height: 0.98; }
+.cam__p { margin-top: 1.2rem; max-width: 26rem; font-size: 1.08rem; line-height: 1.38; color: rgb(241 240 236 / 0.78); }
+
+.gimbal {
+  position: absolute; left: 50%; bottom: 7vh;
+  width: min(74vw, 118vh);
+  margin-left: calc(min(74vw, 118vh) / -2);
+  display: flex; align-items: center;
+}
+.gimbal__part { position: relative; z-index: 1; height: auto; will-change: transform; }
+.gimbal__part[data-part='1'] { width: 17.95%; }
+.gimbal__part[data-part='2'] { width: 24.31%; }
+.gimbal__part[data-part='3'] { width: 31.71%; }
+.gimbal__part[data-part='4'] { width: 26.03%; }
+.gimbal__axis { position: absolute; z-index: 0; left: 2%; right: 2%; top: 50%; height: 1.5px; background: var(--sol); box-shadow: 0 0 12px var(--sol); transform-origin: left; transform: scaleX(0); }
+.gimbal__read { position: absolute; left: 0; bottom: -2.4rem; color: rgb(241 240 236 / 0.75); }
+.gimbal__read b { color: var(--sol); font-weight: 500; }
+.gimbal__labs { position: absolute; inset: 0; pointer-events: none; }
+.glab { position: absolute; top: -3%; transform: translate(-50%, -100%); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.15rem; }
+.glab i { order: 3; display: block; width: 1px; height: 4.5rem; margin-top: 0.6rem; background: rgb(241 240 236 / 0.55); transform-origin: top; transform: scaleY(0); position: relative; }
+.glab i::after { content: ''; position: absolute; left: -3px; bottom: -3px; width: 7px; height: 7px; border-radius: 50%; background: var(--sol); }
+.glab p { font-size: 1rem; letter-spacing: -0.01em; white-space: nowrap; }
+.glab p.mono { font-size: 0.72rem; letter-spacing: 0.08em; }
+.glab p.mono b { color: var(--sol); font-weight: 500; }
+.glab[data-lab='1'] { left: 9%; }
+.glab[data-lab='2'] { left: 33%; }
+.glab[data-lab='3'] { left: 61%; }
+.glab[data-lab='4'] { left: 89%; }
+
+@media (max-width: 700px) {
+  .cam__head { right: var(--gutter); }
+  .gimbal { left: 4vw; width: 92vw; margin-left: 0; bottom: 14vh; transform-origin: 0 50%; }
+  .glab p { font-size: 0.66rem; white-space: normal; width: 5.4rem; line-height: 1.15; }
+  .glab p.mono { font-size: 0.5rem; }
+  .glab i { height: 1.8rem; }
+}

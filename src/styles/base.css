@@ -1,0 +1,158 @@
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--noite); -webkit-text-size-adjust: 100%; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: clip; }
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.4;
+  letter-spacing: var(--tr-body);
+  color: var(--tinta);
+  background: var(--noite);
+  -webkit-font-smoothing: antialiased;
+  font-kerning: normal;
+  opacity: 1;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+h1, h2, h3, p, ul, figure { margin: 0; padding: 0; }
+ul { list-style: none; }
+:focus-visible { outline: 2px solid var(--sol); outline-offset: 3px; border-radius: 4px; }
+
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip:focus { position: fixed; z-index: 100; top: 1rem; left: 1rem; width: auto; height: auto; clip: auto; padding: 0.6rem 1rem; background: var(--areia); }
+
+.page { position: relative; z-index: 2; background: var(--noite); }
+
+.mono, .label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 450;
+}
+.label { display: inline-flex; align-items: center; gap: 0.7em; color: var(--areia); }
+.label i { display: block; width: 1.6rem; height: 1.5px; background: var(--sol); transform-origin: left center; }
+.label--dark { color: var(--lagoa); }
+.dot { display: inline-block; width: 0.5em; height: 0.5em; border-radius: 50%; background: var(--sol); }
+
+/* máscara de linha (SplitText) com folga para acentos e pernas */
+.ln-mask { padding: 0.12em 0.12em 0.22em; margin: -0.12em -0.12em -0.22em; }
+
+/* ===== Wordmark "AeroImports*" ===== */
+.wordmark {
+  font-weight: 620;
+  letter-spacing: var(--tr-name);
+  line-height: 0.74;
+  white-space: nowrap;
+  font-feature-settings: 'kern' 1;
+}
+.wordmark .wm { display: inline-flex; align-items: flex-start; }
+.wm__l {
+  display: inline-block;
+  padding: 0.06em 0 0.1em;
+  margin: -0.06em 0 -0.1em;
+  clip-path: inset(0 -0.5em);
+}
+.wm__l > span { display: inline-block; will-change: transform; }
+/* kerning ótico por letra (medido pela tinta, ver CLAUDE.md) */
+.wordmark .wm__l:nth-child(2) { margin-left: -0.012em; }  /* Ae */
+.wordmark .wm__l:nth-child(3) { margin-left: 0.004em; }   /* er */
+.wordmark .wm__l:nth-child(4) { margin-left: -0.014em; }  /* ro */
+.wordmark .wm__l:nth-child(5) { margin-left: 0.006em; }   /* oi */
+.wordmark .wm__l:nth-child(6) { margin-left: 0.006em; }   /* im */
+.wordmark .wm__l:nth-child(7) { margin-left: 0.004em; }   /* mp */
+.wordmark .wm__l:nth-child(8) { margin-left: 0.002em; }   /* po */
+.wordmark .wm__l:nth-child(9) { margin-left: 0.006em; }   /* or */
+.wordmark .wm__l:nth-child(10) { margin-left: -0.012em; } /* rt */
+.wordmark .wm__l:nth-child(11) { margin-left: 0.01em; }   /* ts */
+.wordmark .wm__star { font-size: 0.3em; margin-left: 0.09em; margin-top: -0.05em; }
+
+/* ===== rótulo que rola no hover ===== */
+.roll {
+  position: relative;
+  display: inline-block;
+  overflow: clip;
+  overflow-clip-margin: 0.15em;
+  line-height: 1.2;
+  vertical-align: middle;
+}
+.roll::after {
+  content: attr(data-t);
+  position: absolute; left: 0; top: 100%;
+  white-space: nowrap;
+}
+.roll, .roll::after { transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1); }
+a:hover .roll, button:hover .roll { transform: translateY(-100%); }
+a:hover .roll::after, button:hover .roll::after { transform: translateY(0); }
+
+/* ===== pílulas ===== */
+.pill {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: inline-flex; align-items: center; gap: 1.1rem;
+  height: 3.25rem; padding: 0 0.4rem 0 1.4rem;
+  border-radius: 99px;
+  background: var(--areia); color: var(--tinta);
+  font-size: 1.05rem; font-weight: 500; letter-spacing: -0.02em;
+}
+.pill__bg { position: absolute; inset: 0; z-index: -1; background: var(--duna); transform: translateX(-101%); transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); border-radius: inherit; }
+.pill:hover .pill__bg { transform: none; }
+.pill__ar {
+  display: grid; place-items: center;
+  width: 2.5rem; height: 2.5rem; border-radius: 50%;
+  background: var(--tinta); color: var(--areia);
+}
+.pill__ar svg, .buy__ar svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 1.5; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.pill:hover .pill__ar svg, .buy:hover .buy__ar svg { transform: rotate(-45deg); }
+.pill--dark { background: var(--tinta); color: var(--areia); }
+.pill--dark .pill__bg { background: var(--lagoa); }
+.pill--dark .pill__ar { background: var(--areia); color: var(--tinta); }
+.pill__ar--wa { background: var(--wa) !important; color: #fff !important; }
+.pill--line { background: transparent; color: var(--tinta); box-shadow: inset 0 0 0 1.5px currentColor; padding: 0 1.4rem; }
+
+.tag {
+  position: absolute; left: 1rem; bottom: 1rem;
+  padding: 0.55rem 0.9rem; border-radius: 99px;
+  background: rgb(15 20 25 / 0.62); color: var(--areia);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+
+/* ===== WhatsApp flutuante ===== */
+.wa-float {
+  position: fixed; z-index: 60; right: clamp(0.9rem, 2vw, 1.6rem); bottom: clamp(0.9rem, 2vw, 1.6rem);
+  display: flex; align-items: center; gap: 0.6rem;
+  height: 3.5rem; padding: 0 0.5rem 0 0.5rem;
+  border-radius: 99px; background: var(--wa); color: #fff;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.28);
+  transform: translateY(160%);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), padding 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.wa-float.is-on { transform: none; }
+body.in-screen .wa-float { transform: translateY(160%); }
+.wa-float svg { width: 2.5rem; height: 2.5rem; padding: 0.3rem; }
+.wa-float__label { max-width: 0; overflow: hidden; white-space: nowrap; font-weight: 550; letter-spacing: -0.01em; transition: max-width 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.wa-float:hover { padding-right: 1.2rem; }
+.wa-float:hover .wa-float__label { max-width: 12rem; }
+.wa-float::before {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; border: 2px solid var(--wa);
+  animation: wa-ping 2.6s cubic-bezier(0.16, 1, 0.3, 1) infinite; pointer-events: none;
+}
+@keyframes wa-ping { 0% { opacity: 0.7; transform: scale(1); } 70%, 100% { opacity: 0; transform: scale(1.35); } }
+
+/* ===== cursor-mira ===== */
+.cursor { position: fixed; z-index: 70; left: 0; top: 0; pointer-events: none; opacity: 0; transition: opacity 0.3s; }
+.cursor.is-on { opacity: 1; }
+.cursor__ring { position: absolute; left: -18px; top: -18px; width: 36px; height: 36px; border: 1.5px solid var(--areia); border-radius: 50%; }
+.cursor__ring::before, .cursor__ring::after { content: ''; position: absolute; background: var(--sol); }
+.cursor__ring::before { left: 50%; top: -8px; bottom: -8px; width: 1.5px; transform: translateX(-50%); }
+.cursor__ring::after { top: 50%; left: -8px; right: -8px; height: 1.5px; transform: translateY(-50%); }
+.cursor__read { position: absolute; left: 26px; top: 14px; white-space: nowrap; color: var(--areia); font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; }
+html.has-cursor .stage.is-hud { cursor: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-float::before { animation: none; }
+}
